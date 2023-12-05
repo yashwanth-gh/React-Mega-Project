@@ -34,7 +34,7 @@ export class AuthService {
                 return userAccount
             }
         } catch (error) {
-            throw error;
+            console.log("Appwrite Auth :: createAccount :: Error ", error);
         }
     }
 
@@ -44,7 +44,7 @@ export class AuthService {
         try {
              return await this.account.createEmailSession(email,password)
         } catch (error) {
-            throw error;
+            console.log("Appwrite Auth :: login :: Error ", error);
         }
     }
 
@@ -54,7 +54,7 @@ export class AuthService {
         try {
             return await this.account.get();
         } catch (error) {
-            throw error;
+            console.log("Appwrite Auth :: getCurrentUser :: Error ", error);
         }
         return null;
     }
@@ -66,7 +66,7 @@ export class AuthService {
             //^ for logout of just current device use [ this.account.deleteSession('current'); ]
             return await this.account.deleteSessions();
         } catch (error) {
-            throw error;
+            console.log("Appwrite Auth :: logout :: Error ", error);
         }
     }
 };
