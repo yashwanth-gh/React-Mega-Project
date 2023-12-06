@@ -31,7 +31,7 @@ function App() {
     <main>
     TODO: {/* <Outlet/> */}
     </main>
-    <Footer/>
+    {/* <Footer/> */}
     </div>
     </div>
   ):null;
