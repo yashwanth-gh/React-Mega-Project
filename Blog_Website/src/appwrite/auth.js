@@ -22,41 +22,43 @@ export class AuthService {
         this.account = new Account(this.client)
     }
 
+    //* -----------------------------------------------------------------------------
+
     //* --method to create new account
-//* -----------------------------------------------------------------------------
-async createAccount({ email, password, name }) {
-    try {
-        const userAccount = await this.account.create(ID.unique(),email,password,name)
-        if(userAccount){
-            //^ here after signUp we can directly login the user instead of telling them login again
-            return this.login({email,password});
-        }else{
-            return userAccount
+
+    async createAccount({ email, password, name }) {
+        try {
+            const userAccount = await this.account.create(ID.unique(), email, password, name)
+            if (userAccount) {
+                //^ here after signUp we can directly login the user instead of telling them login again
+                return this.login({ email, password });
+            } else {
+                return userAccount
             }
         } catch (error) {
             console.log("Appwrite Auth :: createAccount :: Error ", error);
         }
     }
-//* -----------------------------------------------------------------------------
+    //* -----------------------------------------------------------------------------
 
-//* -----------------------------------------------------------------------------
+    //* -----------------------------------------------------------------------------
 
-//* --method to login into existing account
+    //* --method to login into existing account
 
-async login({email,password}){
-    try {
-        return await this.account.createEmailSession(email,password)
+    async login({ email, password }) {
+        try {
+            return await this.account.createEmailSession(email, password)
         } catch (error) {
             console.log("Appwrite Auth :: login :: Error ", error);
         }
     }
-//* -----------------------------------------------------------------------------
+    //* -----------------------------------------------------------------------------
 
-//* -----------------------------------------------------------------------------
+    //* -----------------------------------------------------------------------------
 
     //* --method to check if the account exist if user is in home page of website
 
-    async getCurrentUser(){
+    async getCurrentUser() {
         try {
             return await this.account.get();
         } catch (error) {
@@ -64,13 +66,13 @@ async login({email,password}){
         }
         return null;
     }
-//* -----------------------------------------------------------------------------
+    //* -----------------------------------------------------------------------------
 
-//* -----------------------------------------------------------------------------
-    
+    //* -----------------------------------------------------------------------------
+
     //* --method to logout of existing account
-    
-    async logout({}){
+
+    async logout({ }) {
         try {
             //^ for logout of just current device use [ this.account.deleteSession('current'); ]
             return await this.account.deleteSessions();
