@@ -7,7 +7,7 @@ function Button({
     textColor = 'text-white',
     clasName = '',
     ...props
-
+// FIXME: classname spelling is wrong
 }) {
   return (
 <button className={`px-4 py-2 rounded-lg ${textColor} ${bgColor} ${clasName}`}

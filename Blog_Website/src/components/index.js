@@ -8,6 +8,8 @@ import Input from './Input'
 import Login from './Login'
 import PostCard from './PostCard'
 import Select from './Select'
+import Signup from './Signup';
+//TODO: authLayout not imported
 
 export {
     Footer,
@@ -20,4 +22,5 @@ export {
     Login,
     PostCard,
     Select,
+    Signup
 };
